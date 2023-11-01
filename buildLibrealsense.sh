@@ -3,7 +3,7 @@
 # Copyright (c) 2016-21 Jetsonhacks 
 # MIT License
 
-LIBREALSENSE_DIRECTORY=${HOME}/librealsense
+LIBREALSENSE_DIRECTORY=/src/librealsense
 INSTALL_DIR=$PWD
 NVCC_PATH=/usr/local/cuda/bin/nvcc
 
@@ -83,17 +83,17 @@ reset=`tput sgr0`
 # e.g. echo "${red}The red tail hawk ${green}loves the green grass${reset}"
 
 
-echo ""
-echo "Please make sure that no RealSense cameras are currently attached"
-echo ""
-read -n 1 -s -r -p "Press any key to continue"
-echo ""
+# echo ""
+# echo "Please make sure that no RealSense cameras are currently attached"
+# echo ""
+# read -n 1 -s -r -p "Press any key to continue"
+# echo ""
 
 if [ ! -d "$LIBREALSENSE_DIRECTORY" ] ; then
   # clone librealsense
-  cd ${HOME}
+  cd /src
   echo "${green}Cloning librealsense${reset}"
-  git clone https://github.com/IntelRealSense/librealsense.git
+  git clone --depth 1 --branch $LIBREALSENSE_VERSION https://github.com/IntelRealSense/librealsense.git
 fi
 
 # Is the version of librealsense current enough?
@@ -112,15 +112,15 @@ if [ ! $VERSION_TAG  ] ; then
   exit 1
 fi
 
-# Checkout version the last tested version of librealsense
-git checkout $LIBREALSENSE_VERSION
+# # Checkout version the last tested version of librealsense
+# git checkout $LIBREALSENSE_VERSION
 
-# Install the dependencies
-cd $INSTALL_DIR
-sudo ./scripts/installDependencies.sh
+# # Install the dependencies
+# cd $INSTALL_DIR
+# sudo ./scripts/installDependencies.sh
 
-cd $LIBREALSENSE_DIRECTORY
-git checkout $LIBREALSENSE_VERSION
+# cd $LIBREALSENSE_DIRECTORY
+# git checkout $LIBREALSENSE_VERSION
 
 # Now compile librealsense and install
 mkdir build 

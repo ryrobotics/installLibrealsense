@@ -12,15 +12,15 @@ apt-add-repository universe
 apt-get update
 echo "${green}Adding dependencies, graphics libraries and tools${reset}"
 apt-get install libssl-dev libusb-1.0-0-dev pkg-config -y
-# This is for ccmake
-apt-get install build-essential cmake cmake-curses-gui -y
+# # This is for ccmake
+# apt-get install build-essential cmake cmake-curses-gui -y
 
-# Graphics libraries - for SDK's OpenGL-enabled examples
-apt-get install libgtk-3-dev libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev -y
+# # Graphics libraries - for SDK's OpenGL-enabled examples
+# apt-get install libgtk-3-dev libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev -y
 
-# QtCreator for development; not required for librealsense core library
-apt-get install qtcreator -y
+# # QtCreator for development; not required for librealsense core library
+# apt-get install qtcreator -y
 
-# Add Python 3 support
-apt-get install -y python3 python3-dev
+# # Add Python 3 support
+# apt-get install -y python3 python3-dev
 
